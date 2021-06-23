@@ -24,8 +24,7 @@ namespace cuenta
 
         public void Acreditar(double monto)
         {
-            Efectivo = Efectivo + monto;
-            Cuenta.Acreditar(monto * 0.2);
+            estrategia
         }
         public void Debitar(double monto)
         {
