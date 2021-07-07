@@ -1,4 +1,5 @@
 ﻿
+using System.Linq;
 using banco.Estrategia;
 using System;
 using System.Collections.Generic;
@@ -22,14 +23,15 @@ namespace cuenta
         }
         public int Cbu => Cuenta.Cbu ;
 
-        public void Acreditar(double monto)
+        public  void Acreditar(double monto)
         {
-            estrategia
+            estrategia.Acreditar(Efectivo=Efectivo);
         }
         public void Debitar(double monto)
         {
-            Efectivo = Efectivo - monto;
-            Cuenta.Debitar(monto / 0.2);
+            estrategia.Debitar(this.monto);
+            if (!estrategia.EsApto(this))
+            estrategia.Asignar(this);
 
         }
         public bool Tienealmenos(double monto) => saldo >= monto;
