@@ -18,10 +18,10 @@ namespace cuenta
             Saldo = 0;
 
         }
-        public double Acreditar(double monto) => Saldo = monto + 1;
+        public double Acreditar(double monto) => Saldo += monto;
 
 
-        public double Debitar(double monto) => Saldo = monto - 1;
+        public double Debitar(double monto) => Saldo -= monto;
 
 
         public bool Tienealmenos(double monto) => Saldo >= monto;
