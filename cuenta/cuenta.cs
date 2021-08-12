@@ -25,5 +25,11 @@ namespace cuenta
 
 
         public bool Tienealmenos(double monto) => Saldo >= monto;
+        internal double VaciarCuenta()
+        {
+            var Saldo = this.Saldo;
+            Saldo = 0;
+            return Saldo;
+        }
     }
 }

@@ -7,17 +7,22 @@ namespace banco.Estrategia
     {
         public void Acreditar(Cliente cliente, double monto)
         {
-            throw new NotImplementedException();
+            cliente.AcreditarEfectivo(monto);
         }
 
         public void Debitar(Cliente cliente, double monto)
         {
-            throw new NotImplementedException();
-        }
+           if(cliente.Cuenta.Tienealmenos(monto))
+           {
+               cliente.Cuenta.Debitar(monto);
+           }
+         else
+         {
+           monto-= cliente.Cuenta.VaciarCuenta();
+           cliente.DebitarEfectivo(monto);
+         }
 
-        public bool EsApto(Cliente cliente)
-        {
-            throw new NotImplementedException();
         }
+        public bool EsApto(Cliente cliente) => cliente.Efectivo<10000;
     }
 }
